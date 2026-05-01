@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Route Optimizer Demo · Pawline</title>
+<meta name="description" content="Free demo: paste your customer addresses, get an AI-optimized route in 30 seconds. Built for pet waste removal services.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/styles.css">
+<script async src="https://us.i.posthog.com/static/array.js"></script>
+<script>
+window.posthog && posthog.init('phc_QLq1IyOJF3FIKXvF462tepbZqLj4hHUl5j3OkXE1ReT', {api_host:'https://us.i.posthog.com'});
+</script>
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/">
+    <img src="/logo.png" alt="" class="brand-logo" onerror="this.style.display='none'">
+    <span class="brand-name">Pawline</span>
+  </a>
+  <nav class="topnav">
+    <a href="/">Home</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/tool.html" class="active">Demo</a>
+  </nav>
+</header>
+
+<main class="tool-shell">
+  <section class="tool-hero">
+    <span class="badge">FREE DEMO · No signup required</span>
+    <h1>Route Optimizer</h1>
+    <p class="lede">Paste up to 15 customer addresses, click optimize, and we&rsquo;ll order your stops to minimize drive time. This is exactly what runs inside the full Pawline product &mdash; just gated to 15 stops.</p>
+  </section>
+
+  <section class="tool-grid">
+    <div class="tool-card input-card">
+      <h2>1 &middot; Your stops</h2>
+      <p class="hint">One address per line. Optional: add <code>| dogs:N</code> or <code>| code:1234</code> for context. Or click the sample to try it.</p>
+      <textarea id="stops-input" rows="14" placeholder="123 Maple St, Denver CO 80202 | dogs:2 | code:9911
+456 Oak Ave, Denver CO 80205
+789 Pine Rd, Denver CO 80210 | dogs:1
+&hellip;"></textarea>
+      <div class="input-actions">
+        <button id="sample-btn" type="button" class="btn-ghost">Load sample</button>
+        <button id="optimize-btn" type="button" class="btn-primary">Optimize route &rarr;</button>
+      </div>
+      <p class="meta"><span id="stop-count">0</span> stops loaded &middot; max 15 in demo</p>
+    </div>
+
+    <div class="tool-card output-card">
+      <h2>2 &middot; Optimized route</h2>
+      <div id="status" class="status-empty">
+        <div class="empty-illustration" aria-hidden="true">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none">
+            <circle cx="20" cy="20" r="6" fill="var(--brand-primary)"/>
+            <circle cx="60" cy="35" r="6" fill="var(--brand-primary)" opacity="0.7"/>
+            <circle cx="35" cy="60" r="6" fill="var(--brand-primary)" opacity="0.5"/>
+            <path d="M20 20 Q40 20 60 35 Q60 50 35 60" stroke="var(--brand-accent)" stroke-width="2" stroke-dasharray="4 3" fill="none"/>
+          </svg>
+        </div>
+        <p>Add stops, then click <strong>Optimize route</strong>.</p>
+      </div>
+      <ol id="route-output" class="route-list" hidden></ol>
+      <div id="route-summary" class="route-summary" hidden></div>
+      <div id="route-actions" class="route-actions" hidden>
+        <a id="maps-link" href="#" target="_blank" rel="noopener" class="btn-secondary">Open in Google Maps &rarr;</a>
+        <button id="copy-btn" type="button" class="btn-ghost">Copy route</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="upsell">
+    <h2>Hit the 15-stop ceiling?</h2>
+    <p>The real Pawline does this for 50&ndash;500 yards across a full week, splits routes between techs, remembers gate codes, and re-plans when customers pause. Drop your email and we&rsquo;ll send the early-access link the moment it&rsquo;s ready.</p>
+    <form id="signup-form" class="signup">
+      <input type="email" id="email" name="email" placeholder="you@yourbusiness.com" required>
+      <button type="submit" class="btn-primary">Get early access</button>
+    </form>
+    <p id="signup-msg" class="signup-msg" hidden></p>
+  </section>
+
+  <section class="recent-card">
+    <h2>Recent demo runs</h2>
+    <p class="hint">Last 5 routes optimized by other operators. Numbers only &mdash; no addresses stored.</p>
+    <ul id="recent-list" class="recent-list"><li class="recent-loading">Loading&hellip;</li></ul>
+  </section>
+</main>
+
+<footer class="tool-footer">
+  <p>Made by <a href="https://majorsolutions.studio" target="_blank" rel="noopener">Major Solutions Studio</a> &middot; <a href="/">About Pawline</a></p>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>
