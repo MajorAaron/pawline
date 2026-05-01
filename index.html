@@ -28,11 +28,27 @@ window.posthog && posthog.init('phc_QLq1IyOJF3FIKXvF462tepbZqLj4hHUl5j3OkXE1ReT'
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
   "description": "AI route planner for pet waste removal businesses. Turn a customer list into an optimized weekly schedule in 30 seconds.",
-  "offers": {
-    "@type": "Offer",
-    "price": "19",
-    "priceCurrency": "USD"
-  }
+  "offers": [
+    {"@type": "Offer", "name": "Solo Scooper", "price": "19", "priceCurrency": "USD"},
+    {"@type": "Offer", "name": "Pack Pro", "price": "39", "priceCurrency": "USD"},
+    {"@type": "Offer", "name": "Kennel Master", "price": "89", "priceCurrency": "USD"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Is the demo limited?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Yes, the public demo caps at 15 stops. The full product handles 500+ yards across as many days as you run."}},
+    {"@type": "Question", "name": "Do I need to share my full customer list?",
+     "acceptedAnswer": {"@type": "Answer", "text": "For the demo, no. For the paid product, you upload a CSV. Customer data stays in your Pawline workspace and is never sold or shared."}},
+    {"@type": "Question", "name": "Does Pawline integrate with QuickBooks?",
+     "acceptedAnswer": {"@type": "Answer", "text": "QuickBooks export is available on the Pack Pro tier. Stripe sync is on Kennel Master."}},
+    {"@type": "Question", "name": "How does it route a city it has never seen before?",
+     "acceptedAnswer": {"@type": "Answer", "text": "Pawline uses a large language model trained on geographic data plus pet-waste-tuned heuristics. It groups by neighborhood and zip and sequences for drive time."}}
+  ]
 }
 </script>
 </head>
